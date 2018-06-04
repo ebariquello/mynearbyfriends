@@ -1,0 +1,11 @@
+<div *ngIf="isLogin">
+    <h1>Hi <span>{{userName}}</span></h1>
+    <a [routerLink]="['/list-mfp']">
+        <span class='glyphicon glyphicon-th-list'></span> Posi&ccedil;&atilde;o dos Amigos
+    </a>
+</div>
+
+<div *ngIf="!isLogin">
+    <h1>Voc&ecirc; n&atilde;o est&aacute; autenticado!</h1>
+    <a routerLink="/auth">Autentique-se</a>
+</div>

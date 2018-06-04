@@ -1,0 +1,42 @@
+﻿<div *ngIf="isLogin">
+    <h1>Posição dos Amigos</h1>
+
+    <p *ngIf="!myFriendPositionList"><em>Carregando...</em></p>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltipName"]').tooltip();
+        });
+    </script>
+    <table class='table' *ngIf="myFriendPositionList">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mfp of myFriendPositionList">
+                <td>
+
+                    <div *ngIf="mfp.name">
+                        <div class="col-md-6 text-center bottom-left" style="margin-top:8px">{{ mfp.name }} </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-default" data-toggle="tooltipName" data-placement="top" (click)=showNearFriends(mfp) title="Clique para ver localização do amigo">...</button>
+                        </div>
+                    </div>
+
+                </td>
+                <td>{{ mfp.latitude }}</td>
+                <td>{{ mfp.longitude }}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="!isLogin">
+    <h1>Voc&ecirc; n&atilde;o est&aacute; autenticado!</h1>
+    <a routerLink="/auth">Autentique-se</a>
+</div>
